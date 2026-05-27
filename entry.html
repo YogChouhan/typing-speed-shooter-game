@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Word Game - Entry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="logo.png" rel="icon">
+    <style>
+        html{
+            background-color: black;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle, #1a1a3a 0%, #000000 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .entry {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            gap: 35px;
+        }
+
+        .entry-text {
+            font-size: 4rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            /* Glowing text effect */
+            text-shadow: 0 0 10px cyan, 0 0 20px blue;
+            text-align: center;
+        }
+
+        .play-btn {
+            padding: 15px 50px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            background-color: transparent;
+            color: cyan;
+            border: 2px solid cyan;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .play-btn:hover {
+            background-color: cyan;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        .instructions {
+            /* Glassmorphism effect for the instruction box */
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 650px;
+            line-height: 1.6;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .instructions span {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ff0055; /* Neon pink for emphasis */
+            text-shadow: 0 0 10px #ff0055;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .instructions ul {
+            list-style-type: none;
+        }
+
+        .instructions li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+            font-size: 1.1rem;
+            color: #d1d1e0;
+        }
+
+        /* Custom cool bullet points */
+        .instructions li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: cyan;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="entry">
+        <div class="entry-text">Word Game</div>
+        
+        <div class="choice">
+            <a href="main.html" id="play-link" style="text-decoration: none;">
+                <button class="play-btn">Play</button>
+            </a>
+        </div>
+        
+        <div class="instructions">
+            <span>Instructions</span>
+            <ul>
+                <li>⚡ Type Fast: Words will spawn on screen. Type them before they vanish!</li>
+                <li>❤️ Survive: You have 3 lives. Missing a word costs one life.</li>
+                <li>🔥 Adapt: The game speeds up every 50 points. Good luck!</li>
+            </ul>
+        </div>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Smooth transition effect when clicking play
+        $('.play-btn').on('click', function(e) {
+            e.preventDefault(); // Stop the link from jumping immediately
+            
+            const link = $('#play-link').attr('href');
+            
+            // Bright flash effect on click
+            $(this).css({
+                'background-color': 'white',
+                'color': 'black',
+                'box-shadow': '0 0 50px green',
+                'border-color': 'white'
+            });
+
+            // Fade the whole screen out smoothly, then navigate to main.html
+            $('body').fadeOut(500, function() {
+                window.location.href = link;
+            });
+        });
+    });
+</script>
+</body>
+</html>

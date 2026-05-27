@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>End Screen-Text Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="logo.png" rel="icon">
+    <style>
+        html{
+            background-color: black;
+        }
+
+        *{
+            font-family: 'Poppins', sans-serif;
+            padding: 0px;
+            margin: 0px;
+            color: white;
+        }
+        
+        body{
+            background: radial-gradient(circle, #1a1a3a 0%, #000000 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-self: center;
+            height: 100vh;
+            gap: 25px;
+            text-align: center;
+        }
+
+        .final-score-exit{
+            font-family: 'Anton' ,sans-serif;
+            background: linear-gradient(to right, rgb(255, 212, 212), transparent);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 15rem;
+            line-height: 1;
+        }
+
+        .btn{
+            padding: 15px 50px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            background-color: transparent;
+            color: cyan;
+            border: 2px solid cyan;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 0 10px cyan, inset 0 0 10px cyan;
+            margin: 3px;
+        }
+
+        .btn:hover {
+            background-color: cyan;
+            color: #000;
+            box-shadow: 0 0 25px cyan, inset 0 0 20px cyan;
+            transform: scale(1.05);
+        }
+
+        #new-record-alert{
+            display: none;
+            color: #00ff00;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 0 0 15px #00ff00;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        #high-score-display{
+            color: cyan;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="gg-content">
+        <div class="subtitle">Points Scored</div>
+        <div class="final-score-exit"></div>
+        <div id="new-record-alert">
+            🏆 New Record! 🏆
+        </div>
+        <div class="subtitle" id="high-score-display">
+            All-Time Best: 0
+        </div>
+        <div class="choice">
+            <button class="btn" id="btn-play-again">Play Again</button>
+            <button class="btn" id="btn-main-menu">Main Menu</button>
+        </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        let savedScore = localStorage.getItem('playerScore');
+        if (savedScore===null){
+            savedScore=0;
+        }
+        savedScore=parseInt(savedScore);
+
+        let highScore = localStorage.getItem('highScore');
+        if (highScore===null){
+            highScore=0;
+        }
+        else{
+            highScore=parseInt(highScore);
+        }
+
+        if (savedScore>highScore){
+            highScore=savedScore;
+            localStorage.setItem('highScore',highScore);
+
+            $('#new-record-alert').fadeIn(800);
+        }
+
+
+        $('.final-score-exit').text(savedScore);
+        $('#high-score-display').text("All-Time Best: " + highScore);
+
+    $('#btn-play-again').on('click', function() {
+        $('body').fadeOut(400, function() {
+            window.location.href = 'main.html';
+        });
+    });
+
+    $('#btn-main-menu').on('click', function(){
+        $('body').fadeOut(400, function(){
+            window.location.href = 'entry.html';
+        })
+    })
+
+    
+    })
+</script>
+</html>
