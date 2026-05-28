@@ -26,16 +26,14 @@ A fun and interactive browser-based game that combines typing practice with shoo
 ---
 
 ## 📂 Project Structure
+The repository consists of the following core files:
 
-```bash
-typing-speed-shooter-game/
-│
-├── index.html
-├── style.css
-├── script.js
-└── assets/
-```
-
+- `entry.html` - The landing/start screen of the game.
+- `main.html` - The core gameplay interface where the action happens.
+- `gg.html` - The "Game Over" screen displaying final stats and WPM.
+- `script.js` - Contains all the core mechanics and JavaScript logic.
+- `style.css` - The stylesheet for making the game look great.
+- `logo.png` - Logo asset for the game.
 ---
 
 ## 🎮 How to Play
